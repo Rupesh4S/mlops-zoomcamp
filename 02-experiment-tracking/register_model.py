@@ -77,9 +77,9 @@ def run_register_model(data_path: str, top_n: int):
                 max_results=top_n,
                 order_by=["metrics.test_rmse ASC"])[0]
     
-
+    print(best_run)
     # Register the best model
-    mlflow.register_model(model_uri=f"runs:/{best_run['run_id']}/model",name="forest-fare")
+    mlflow.register_model(model_uri=f"runs:/{best_run.info.run_id}/model",name="forest-fare")
 
 
 if __name__ == '__main__':
